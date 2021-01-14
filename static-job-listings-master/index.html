@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  
+  <link
+  async
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/npm/semantic-ui@${props.versions.sui}/dist/semantic.min.css"
+/>
+<script
+  async
+  src="//cdn.jsdelivr.net/npm/semantic-ui@${props.versions.sui}/dist/semantic.min.js"
+></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap" rel="stylesheet">
+  
+
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    .bar{
+      background-image: url("images/bg-header-desktop.svg");
+      background-repeat: no-repeat;
+      height: 155px;
+    }
+    .wrapper{
+      width: 1365px;
+      background-color: hsl(180, 52%, 96%);
+      display: grid;
+      grid-template-rows: repeat(10, 1fr);
+      justify-content: center;
+      row-gap: 28px;
+      padding-top: 80px;
+      padding-bottom: 100px;
+    }
+    .box{
+      background-color: white;
+      display: block;
+      grid-column: 1;
+      padding:25px;
+      width: 1000px;
+      border-radius: 5px;
+      box-shadow: 5px 8px 20px -16px hsl(180, 36%, 64%);
+    }
+    .filter_box{
+      background-color: white;
+      position: absolute;
+      display: grid;
+      grid-column: 1;
+      top:130px;
+      left:165px;
+      width:1050px;
+      height:65px;
+      border-radius: 5px;
+      box-shadow: 5px 8px 20px -16px hsl(180, 36%, 64%);
+    }
+    img{
+      border-radius: 40px;
+      width: 70px;
+    }
+    .title1{
+      font-family: 'Spartan', sans-serif;
+      color: hsl(180, 29%, 50%);
+      font-size: 12px;
+      position: absolute;
+      padding-top: 5px;
+      padding-left: 90px;
+      font-weight: bold;
+    }
+
+    .title2{
+      font-family: 'Spartan', sans-serif;
+      color: hsl(180, 14%, 20%);
+      font-size: 16px;
+      position: absolute;
+      padding-top: 30px;
+      padding-left: 90px;
+      font-weight: bold;
+    }
+
+    .title3{
+      font-family: 'Spartan', sans-serif;
+      color: hsl(180, 8%, 52%);
+      font-size: 12px;
+      position: absolute;
+      padding-top: 60px;
+      padding-left: 90px;
+    }
+
+    .buttons{
+      flex-direction: row;
+      display: inline-flex;
+      float: right;
+      margin-left: 5px;
+      margin-top: 20px;
+    }
+
+    .buttons :nth-child(n){
+      background-color: hsl(180, 52%, 96%);
+      border: none;
+      font-family: 'Spartan', sans-serif;
+      color: hsl(180, 29%, 50%);
+      font-weight: bold;
+      border-radius: 3px;
+      font-size: 10px;
+      margin: 5px;
+      padding: 5px;
+    }
+
+    .buttons2{
+      flex-direction: row;
+      display: inline-flex;
+      float: left;
+      margin-bottom: 40px;
+      margin-left: 35px;
+      margin-top: 25px;
+    }
+
+    .buttons2 :nth-child(n){
+      background-color: hsl(180, 52%, 96%);
+      border: none;
+      font-family: 'Spartan', sans-serif;
+      color: hsl(180, 29%, 50%);
+      font-weight: bold;
+      border-radius: 3px;
+      font-size: 10px;
+      margin-left: 10px;
+      padding: 5px;
+    }
+    
+    .btn:hover{
+      background-color: hsl(180, 29%, 50%);
+      color: hsl(180, 52%, 96%);
+    }
+
+    .feature{
+      flex-direction: row;
+      display: inline-flex;
+      float: right;
+    }
+
+    .feature :nth-child(n){
+      background-color: hsl(180, 29%, 50%);
+      border: none;
+      font-family: 'Spartan', sans-serif;
+      color: hsl(180, 52%, 96%);
+      font-weight: bold;
+      border-radius: 30px;
+      font-size: 8px;
+      margin: 3px;
+      padding: 5px;
+      height: 7px;
+      line-height: 10px;
+      text-align: center;
+    }
+    .btn2{
+      position: absolute;
+      float: right;
+      font-family: 'Spartan', sans-serif; 
+      color: hsl(180, 29%, 50%);
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 30px;
+      margin-right: 35px;
+    }
+
+
+    /* data-role="frontend" data-level="junior" data-languages="javascript" data-tools="react" */
+  </style>
+</head>
+<body>
+  <div class="bar"> 
+    &nbsp;
+  </div>
+  <div class="wrapper">
+    <div class="filter_box" >
+      <a class="btn2" id="clearbutton" style="padding-left: 980px; text-decoration: underline;">Clear</a>
+      <div id="buttons2" class="buttons2">
+      </div>
+    </div>
+    <div id="Photosnap" class="box">
+      <div class="title1">Photosnap</div>
+      <div class="title2">Senior Frontend Developer</div>
+      <div class="title3">1d ago · Full time · USA only</div>
+      <img src="images/photosnap.svg">
+      <div class="buttons">
+        <button class="btn Frontend" data-role="frontend" onclick="filterSelection('Frontend')">Frontend</button>
+        <button class="btn Senior" data-level="senior" onclick="filterSelection('Senior')">Senior</button>
+        <button class="btn HTML" data-languages="html" onclick="filterSelection('HTML')">HTML</button>
+        <button class="btn CSS" data-languages="css" onclick="filterSelection('CSS')">CSS</button>
+        <button class="btn JavaScript" data-languages="javascript" onclick="filterSelection('JavaScript')">JavaScript</button>
+      </div>
+      <div class="feature" style="margin-right: 430px;">
+        <div>NEW!</div>
+        <div style="background-color: black;">FEATURED</div>
+      </div>
+    </div>
+    <div id="Manage" class="box">
+      <div class="title1">Manage</div>
+      <div class="title2">Fullstack Developer</div>
+      <div class="title3">1d ago · Part time · Remote</div>
+      <img src="images/manage.svg">
+      <div class="buttons">
+        <button class="btn" onclick="filterSelection('Fullstack')">Fullstack</button>
+        <button class="btn" onclick="filterSelection('Midweight')">Midweight</button>
+        <button class="btn" onclick="filterSelection('Python')">Python</button>
+        <button class="btn" onclick="filterSelection('React')">React</button>
+      </div>
+      <div class="feature" style="margin-right: 485px;">
+        <div style="order: 1;">NEW!</div>
+        <div style="order: 2; background-color: black;">FEATURED</div>
+      </div>
+    </div>
+    <div id="Account" class="box" style="grid-row: 3/4;">
+      <div class="title1">Account</div>
+      <div class="title2">Junior Frontend Developer</div>
+      <div class="title3">2d ago · Part time · USA only</div>
+      <img src="images/account.svg">
+      <div class="buttons">
+        <button class="btn" onclick="filterSelection('Frontend')">Frontend</button>
+        <button class="btn" onclick="filterSelection('Junior')">Junior</button>
+        <button class="btn" onclick="filterSelection('React')">React</button>
+        <button class="btn" onclick="filterSelection('Sass')">Sass</button>
+        <button class="btn" onclick="filterSelection('JavaScript')">JavaScript</button>
+      </div>
+      <div class="feature" style="margin-right: 510px;">
+        <div style="order: 1;">NEW!</div>
+      </div>
+    </div>
+    <div id="MyHome" class="box">
+      <div class="title1">MyHome</div>
+      <div class="title2">Junior Frontend Developer</div>
+      <div class="title3">5d ago · Contract · USA only</div>
+      <img src="images/myhome.svg">
+      <div class="buttons">
+        <button class="btn" onclick="filterSelection('Frontend')">Frontend</button>
+        <button class="btn" onclick="filterSelection('Junior')">Junior</button>
+        <button class="btn" onclick="filterSelection('CSS')">CSS</button>
+        <button class="btn" onclick="filterSelection('JavaScript')">JavaScript</button>
+      </div>
+    </div>
+    <div id="Loop Studios" class="box">
+      <div class="title1">Loop Studios</div>
+      <div class="title2">Software Engineer</div>
+      <div class="title3">1w ago · Full time · Worldwide</div>
+      <img src="images/loop-studios.svg">
+      <div class="buttons">
+        <button class="btn" onclick="filterSelection('Fullstack')">Fullstack</button>
+        <button class="btn" onclick="filterSelection('Midweight')">Midweight</button>
+        <button class="btn" onclick="filterSelection('JavaScript')">JavaScript</button>
+        <button class="btn" onclick="filterSelection('Sass')">Sass</button>
+        <button class="btn" onclick="filterSelection('Ruby')">Ruby</button>
+      </div>
+    </div>
+    <div id="FaceIt" class="box">
+      <div class="title1">FaceIt</div>
+      <div class="title2">Junior Backend Developer</div>
+      <div class="title3">2w ago · Full time · UK only</div>
+      <img src="images/faceit.svg">
+      <div class="buttons">
+        <button class="btn" onclick="filterSelection('Backend')">Backend</button>
+        <button class="btn" onclick="filterSelection('Junior')">Junior</button>
+        <button class="btn" onclick="filterSelection('Ruby')">Ruby</button>
+        <button class="btn" onclick="filterSelection('RoR')">RoR</button>
+      </div>
+    </div>
+    <div id="Shortly" class="box">
+      <div class="title1">Shortly</div>
+      <div class="title2">Junior Developer</div>
+      <div class="title3">2w ago · Full time · Worldwide</div>
+      <img src="images/shortly.svg">
+      <div class="buttons">
+        <button class="btn" onclick="filterSelection('Frontend')">Frontend</button>
+        <button class="btn" onclick="filterSelection('Junior')">Junior</button>
+        <button class="btn" onclick="filterSelection('HTML')">HTML</button>
+        <button class="btn" onclick="filterSelection('Sass')">Sass</button>
+        <button class="btn" onclick="filterSelection('JavaScript')">JavaScript</button>
+      </div>
+    </div>
+    <div id="Insure" class="box">
+      <div class="title1">Insure</div>
+      <div class="title2">Junior Frontend Developer</div>
+      <div class="title3">2w ago · Full time · USA only</div>
+      <img src="images/insure.svg">
+      <div class="buttons">
+        <button class="btn" onclick="filterSelection('Frontend')">Frontend</button>
+        <button class="btn" onclick="filterSelection('Junior')">Junior</button>
+        <button class="btn" onclick="filterSelection('Vue')">Vue</button>
+        <button class="btn" onclick="filterSelection('JavaScript')">JavaScript</button>
+        <button class="btn" onclick="filterSelection('Sass')">Sass</button>
+      </div>
+    </div>
+    <div id="Eyecam Co." class="box">
+      <div class="title1">Eyecam Co.</div>
+      <div class="title2">Full Stack Engineer</div>
+      <div class="title3">3w ago · Full time · Worldwide</div>
+      <img src="images/eyecam-co.svg">
+      <div class="buttons">
+        <button class="btn" onclick="filterSelection('Fullstack')">Fullstack</button>
+        <button class="btn" onclick="filterSelection('Midweight')">Midweight</button>
+        <button class="btn" onclick="filterSelection('JavaScript')">JavaScript</button>
+        <button class="btn" onclick="filterSelection('Django')">Django</button>
+        <button class="btn" onclick="filterSelection('Python')">Python</button>
+      </div>
+    </div>
+    <div id="the Air Filter Company" class="box">
+      <div class="title1">the Air Filter Company</div>
+      <div class="title2">Front-end Dev</div>
+      <div class="title3">1mo ago · Part time · Worldwide</div>
+      <img src="images/the-air-filter-company.svg">
+      <div class="buttons">
+        <button class="btn" onclick="filterSelection('Frontend')">Frontend</button>
+        <button class="btn" onclick="filterSelection('Junior')">Junior</button>
+        <button class="btn" onclick="filterSelection('React')">React</button>
+        <button class="btn" onclick="filterSelection('Sass')">Sass</button>
+        <button class="btn" onclick="filterSelection('JavaScript')">JavaScript</button>
+      </div>
+    </div>
+  </div>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script>
+    var features = [];
+    var filterbox = [];
+    var tags = [];
+    var dict = {};
+    var companies = [...document.getElementsByClassName("title1")];
+    companies.forEach((element,index) => {
+      companies[index] = element.innerHTML;
+    });
+    
+    //Clear button
+    function clear(){
+      features.forEach(node => {
+        node.style.display = 'block';
+      });
+      filterbox.forEach(node =>{
+        node.style.display = 'none';
+      })
+    }
+    document.getElementById("clearbutton").addEventListener("click", clear);
+
+    //Select feature 
+    function filterSelection(c){
+      var x, i;
+      x = document.getElementsByClassName("btn");
+      for (i = 0; i < companies.length; i++) 
+        w3RemoveClass(companies[i], c);
+    }
+
+    function w3RemoveClass(element, name) {
+      var node = document.getElementById(element)
+      var htmlContent = (node.innerText).split("\n");
+      
+      if(!htmlContent.includes(name)){
+        features.push(node);
+        if(!tags.includes(name)) {
+          tags.push(name);
+          addFilter(name);
+        }
+        node.style.display = 'none';
+      }
+    }
+
+    function addFilter(name){
+        var node = document.createElement("button");
+        var textnode = document.createTextNode(name);
+        node.appendChild(textnode);
+        filterbox.push(node);
+        document.getElementById("buttons2").appendChild(node);
+    }
+  </script>
+</body>
+</html>
